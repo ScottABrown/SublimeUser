@@ -1,0 +1,62 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def ${1:module_level_function}(${3:param1}, ${6:param2}=None, *args, **kwargs):
+    """${2:This is an example of a module level function.}
+
+    Function parameters should be documented in the ``Args`` section. The name
+    of each parameter is required. The type and description of each parameter
+    is optional, but should be included if not obvious.
+
+    If the parameter itself is optional, it should be noted by adding
+    ", optional" to the type. If \*args or \*\*kwargs are accepted, they
+    should be listed as \*args and \*\*kwargs.
+
+    The format for a parameter is::
+
+        name (type): description
+          The description may span multiple lines. Following
+          lines should be indented.
+
+          Multiple paragraphs are supported in parameter
+          descriptions.
+
+    Args:
+      ${3:param1} (${4:int}): ${5:The first parameter}.
+      ${6:param2} (${7:str, optional}): ${8:The second parameter. Defaults to None.
+        Second line of description should be indented.}
+      ${9:*args: Variable length argument list.}
+      ${10:**kwargs: Arbitrary keyword arguments.}
+
+    Returns:
+      ${4:bool}: ${5:True} if successful, False otherwise.
+
+      The return type is optional and may be specified at the beginning of
+      the ``Returns`` section followed by a colon.
+
+      The ``Returns`` section may span multiple lines and paragraphs.
+      Following lines should be indented to match the first line.
+
+      The ``Returns`` section supports any reStructuredText formatting,
+      including literal blocks::
+
+          {
+              '${3:param1}': ${3:param1},
+              '${6:param2}': ${6:param2}
+          }
+
+    Raises:
+      ${11:AttributeError}: ${12:The ``Raises`` section is a list of all exceptions
+        that are relevant to the interface.}
+      ${13:ValueError}: ${14:If `${6:param2}` is equal to `${3:param1}`}.
+
+    """
+    if ${3:param1} == ${6:param2}:
+        raise ValueError('${3:param1} may not be equal to ${6:param2}')
+    ${15:return True}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pymodulefunc</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

@@ -1,0 +1,58 @@
+<snippet>
+	<content><![CDATA[
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class ${1:SpecialAction}(argparse.Action):
+    '''Special handling for an argparse option. Assign action=SpecialAction.
+
+    See the Python documentation for argparse for specifics.
+    '''
+
+	# Change nargs here.
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def __init__(self, option_strings, dest, nargs=1, **kwargs):
+        '''
+        Initialize a ${1:SpecialAction} instance. See the Python
+        documentation for argparse for specifics.
+        '''
+        super(${1:SpecialAction}, self).__init__(
+        	option_strings, dest, nargs, **kwargs
+        	)
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def __call__(self, parser, namespace, values, option_string=None):
+        '''
+        Handle processing of a command line parameter that has
+        ${1:SpecialAction} assigned as its action.
+        '''
+
+		# We can see the value(s) passed on the command line as the
+		# value of this option.
+		if None in values:
+			# We can see the option string that triggered this call
+			# to this Action.
+	        if option_string == '--some-option':
+				pass
+
+	        # We can interrupt parsing with an ArgumentError.
+	        if False:
+		        raise argparse.ArgumentError(None, 'not true.')
+
+        	# Set the value of the option.
+            setattr(namespace, self.dest, option_string)
+
+		# We can check the value of other options.
+        other_option_value = getattr(namespace, 'another_option')
+
+		# We can see if we already have some value for this option,
+		# initialize it, etc.
+        if not getattr(namespace, self.dest):
+            setattr(namespace, self.dest, {})
+        getattr(namespace, self.dest).update({prefix: suffixes})
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pyparse-action</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

@@ -1,0 +1,23 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Global declarations
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+declare -r TRUE=1
+declare -r FALSE=0
+declare -r SUCCESS=0	# Exit codes.
+declare -r FAILURE=1	# Exit codes.
+
+declare -r LAUNCH_DIR=\$(pwd)
+declare -r SCRIPT_DIR=\$(dirname \$0)
+declare -r SCRIPT_NAME=\$(basename \$0)
+$0
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>globals</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+	<description>Globals block</description>
+</snippet>

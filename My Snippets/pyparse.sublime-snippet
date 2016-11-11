@@ -1,0 +1,55 @@
+<snippet>
+	<content><![CDATA[
+
+import argparse
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def argument_parser():
+    '''
+    Define command line arguments.
+    '''
+
+    parser = argparse.ArgumentParser(
+        description='''
+        $1
+        '''
+        )
+
+    # Choose one version of verbose.
+    parser.add_argument(
+        '-v', '--verbose',
+        dest='verbose',
+        required=False,
+        default=False,
+        action='store_true',
+        help='''
+            show more output.
+            '''
+        )
+
+    parser.add_argument(
+        '-v', '--verbose',
+        dest='verbose',
+        default=0,
+        action='count',
+        help='''show more output.'''
+        )
+
+    parser.add_argument(
+        'input_file',
+        metavar="INPUT_FILE",
+        nargs='*',
+        help='''
+            file.
+            '''
+        )
+
+    return parser
+
+$0
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pyparse</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

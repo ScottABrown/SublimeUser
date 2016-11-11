@@ -1,0 +1,47 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class ${1:ExampleClass}(${2:object}):
+    """${3:The summary line for a class docstring should fit on one line.}
+
+    If the class has public attributes, they should be documented here
+    in an ``Attributes`` section and follow the same formatting as a
+    function's ``Args`` section.
+
+    Attributes:
+      ${4:attr1} (${5:str}): ${6:Description of `${4:attr1}`.}
+      ${7:attr2} (${8:list of str}): ${9:Description of `${7:attr2}`.}
+      ${10:attr3} (${11:int}): ${12:Description of `${10:attr3}`.}
+
+    """
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def __init__(self, ${13:param1}, ${14:param2}, ${15:param3}=${16:0}):
+        """${17:Example of docstring on the __init__ method.}
+
+        The __init__ method may be documented in either the class level
+        docstring, or as a docstring on the __init__ method itself.
+
+        Either form is acceptable, but the two should not be mixed. Choose one
+        convention to document the __init__ method and be consistent with it.
+
+        Note:
+          Do not include the `self` parameter in the ``Args`` section.
+
+        Args:
+          ${13:param1} (${5:str}): ${16:Description of `${13:param1}`.}
+          ${14:param2} (${8:list of str}): ${18:Description of `${14:param2}`. Multiple
+            lines are supported.}
+          ${15:param3} (${11:int}): ${19:Description of `${15:param3}`, defaults to 0.}
+
+        """
+        self.${4:attr1} = ${13:param1}
+        self.${7:attr2} = ${14:param2}
+        self.${10:attr3} = ${15:param3}
+        ${20}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pyclass</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

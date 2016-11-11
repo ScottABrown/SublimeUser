@@ -1,0 +1,20 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def main():
+    '''
+    Main program entry point.
+    '''
+
+    parser = argument_parser()
+    args = parser.parse_args()
+$0
+if __name__ == "__main__":
+    main()
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pymain</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

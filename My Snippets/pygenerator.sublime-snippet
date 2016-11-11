@@ -1,0 +1,28 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def ${1:example_generator}(${3:bound}):
+    """${2:Generators have a ``Yields`` section instead of a ``Returns`` section.}
+
+    Args:
+      ${3:bound} (${4:int}): ${5:The upper limit of the range to generate, from 0 to `${3:bound}` - 1}
+
+    Yields:
+      ${6:int}: ${6:The next number in the range of 0 to `${3:bound}` - 1}
+
+    Examples:
+      Examples should be written in doctest format, and should illustrate how
+      to use the function.
+
+      >>> print [i for i in ${1:example_generator}(4)]
+      [0, 1, 2, 3]
+
+    """
+    for i in range(${3:bound}):
+        ${7:yield i}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pygenerator</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

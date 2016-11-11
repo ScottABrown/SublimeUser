@@ -1,0 +1,22 @@
+<snippet>
+	<content><![CDATA[
+from mako.lookup import TemplateLookup
+# from mako.template import Template
+import premailer
+
+    template_dir = ${1}
+    templatename = ${2}
+
+    template_lookup = TemplateLookup(directories=[template_dir])
+    template = template_lookup.get_template(templatename)
+    html_report = template.render(
+		${3:param1}=${4:param1}
+        )
+    email_report = premailer.transform(html_report)
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pymako</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

@@ -1,0 +1,72 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Usage message and command line options
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+usage() {
+
+    local usage="usage: \$SCRIPTNAME"
+    local pad_width=\${#usage}
+    local pad_space=\$(printf "%${pad_width}s")
+
+    local Q="'"
+
+    # This bit is all to get the extra option lines lined up. Pretty. :)
+    echo
+    echo "$usage [-h] [-c CONFIGFILEPATH]"
+    echo "$pad_space [-v[v...]]"
+
+	cat << EOUSAGE
+
+A description of the purpose of this script.
+
+Options:
+  -h   Print this message
+  -c CONFIGFILEPATH
+  		Read configuration from file at CONFIGFILEPATH.
+  -v   Verbose: Print additional progress information. (Repeatable.)
+
+EOUSAGE
+	}
+
+declare OPT_CONFIGFILEPATH=''
+declare -i OPT_VERBOSITY=0
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+parse_args() {
+	while getopts ":hv" option
+	do
+		case \$option in
+			h)
+				usage
+				exit \$SUCCESS
+				;;
+			c)
+				OPT_CONFIGFILEPATH="$OPTARG"
+				;;
+			v)
+				OPT_VERBOSITY=\$((OPT_VERBOSITY + 1))
+				;;
+			?)
+				echo "Invalid option: -\$OPTARG" >&2
+				echo
+				usage
+				exit \$FAILURE
+				;;
+			esac
+		done
+
+	# Remove all the parsed options.
+	shift \$((\$OPTIND - 1))
+	}
+
+$0
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>getoptions</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+	<description>Bash options and usage</description>
+</snippet>

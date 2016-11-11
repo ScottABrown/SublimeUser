@@ -1,0 +1,24 @@
+<snippet>
+	<content><![CDATA[
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def ${1:example_method}(self, ${2:param1}, ${3:param2}):
+        """${4:Class methods are similar to regular functions.}
+
+        Note:
+          Do not include the `self` parameter in the ``Args`` section.
+
+        Args:
+          ${2:param1}: ${5:The first parameter.}
+          ${3:param2}: ${6:The second parameter.}
+
+        Returns:
+          ${7:True if successful, False otherwise.}
+
+        """
+        ${8:return True}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pymethod</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

@@ -1,0 +1,31 @@
+<snippet>
+	<content><![CDATA[
+
+	# In argument parsing method:
+    # parser.add_argument(
+    #     '--${1:config}',
+    #     type=argparse.FileType('r'),
+    #     metavar='${2:CONFIG_FILE}',
+    #     help="""
+    #         ${3:Command line arguments file name}
+    #         """
+    #     )
+
+    global ${4:args}
+    parser = argument_parser()
+    ${4:args} = parser.parse_args()
+
+    if ${4:args}.${1}:
+        # Parse options in the indicated file.
+        parser.parse_args(
+            json.load(args.${1}),
+            namespace=${4:args}
+            )
+        ${4:args}.${1}.close()
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pyparamsfile</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

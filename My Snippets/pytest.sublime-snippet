@@ -1,0 +1,74 @@
+<snippet>
+	<content><![CDATA[
+
+'''
+test_$1.py
+
+Test cases for the $1.py module.
+'''
+
+import unittest
+
+import $1
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Uncomment to show lower level logging statements.
+# import logging
+# logger = logging.getLogger()
+# logger.setLevel(logging.DEBUG)
+# shandler = logging.StreamHandler()
+# shandler.setLevel(logging.INFO)  # Pick one.
+# shandler.setLevel(logging.DEBUG)  # Pick one.
+# logger.addHandler(shandler)
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class Test$2(unittest.TestCase):
+    '''
+    Basic test cases for $2.
+    '''
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def setUp(self):
+        '''Test case common fixture setup.
+        '''
+        pass
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def test_$1_init(self):
+        '''Test initialization of a $2 instance.
+        '''
+
+        thing = $1.$2()
+        self.assertIsNotNone(thing)
+
+        self.assertTrue(True)
+        self.assertEqual(1, 1)
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Define test suite.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# pylint: disable=invalid-name
+load_case = unittest.TestLoader().loadTestsFromTestCase
+all_suites = {
+    # Lowercase these.
+    'suite_$2': load_case(
+        Test$2
+        ),
+    }
+
+master_suite = unittest.TestSuite(all_suites.values())
+# pylint: enable=invalid-name
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+if __name__ == '__main__':
+    unittest.main()
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pytest</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

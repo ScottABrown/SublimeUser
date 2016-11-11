@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+# # Uncomment this to see package level log messages.
+# # pylint: disable=invalid-name
+# log_level = logging.INFO
+# # log_level = logging.DEBUG
+#
+# logger = logging.getLogger()
+# logger.setLevel(log_level)
+# 
+# log_formatter = logging.Formatter(
+#     '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+#     )
+# 
+# shandler = logging.StreamHandler()
+# shandler.setLevel(log_level)
+# shandler.setFormatter(log_formatter)
+# logger.addHandler(shandler)
+# # pylint: enable=invalid-name
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pylogging-testfile</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

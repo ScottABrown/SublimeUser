@@ -1,0 +1,25 @@
+<snippet>
+	<content><![CDATA[
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+#
+# Main program entry point.
+#
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+main() {
+
+	parse_args "\$@"
+	$1
+
+	}
+
+
+main "\$@"
+$0
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>main</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+	<description>Bash main()</description>
+</snippet>

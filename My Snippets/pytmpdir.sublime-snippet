@@ -1,0 +1,33 @@
+<snippet>
+	<content><![CDATA[
+
+# Move to imports section:
+import os
+import tempfile
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @classmethod
+    def setUpClass(cls):
+        '''Test case class common fixture setup.
+        '''
+        cls.tmpdir = tempfile.mkdtemp()
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @classmethod
+    def tearDownClass(cls):
+        '''Test case class common fixture teardown.
+        '''
+        for root, dirs, files in os.walk(cls.tmpdir, topdown=False):
+            for name in files:
+                os.remove(os.path.join(root, name))
+            for name in dirs:
+                os.rmdir(os.path.join(root, name))
+
+        os.rmdir(cls.tmpdir)
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pytmpdir</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

@@ -1,0 +1,16 @@
+{
+	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night-Bright.tmTheme",
+	"font_face": "Ubuntu Mono",
+	"font_size": 15.0,
+	"ignored_packages":
+	[
+		"Emmet",
+		"Vintage"
+	],
+	"rulers":
+	[
+		70,
+		80
+	],
+	"theme": "Soda Dark.sublime-theme"
+}
