@@ -78,7 +78,10 @@ def log_startup_configuration(args):
     logger.info('#%sStarting %s', ' ' * 24, FILENAME)
     logger.info('#%s', ' -' * 32)
     logger.debug('Process PID: %s', os.getpid())
-    logger.info('Log file is %s', args.log_path)
+    if args.no_log:
+        logger.info('logging is disabled')
+    else:
+        logger.info('log file is %s', args.log_path)
 
     logger.debug('Command line parameters:')
     for attr in [attr for attr in dir(args) if attr[0] != '_']:

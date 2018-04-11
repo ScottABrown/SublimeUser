@@ -1,0 +1,9 @@
+{
+
+    "pep8_ignore":
+    [
+        "E123", "E124"
+	    ],
+
+    "sublimelinter_popup_errors_on_save": true
+	}

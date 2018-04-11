@@ -8,22 +8,25 @@ import tempfile
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     @classmethod
     def setUpClass(cls):
-        '''Test case class common fixture setup.
-        '''
+        '''Test case class common fixture setup.'''
         cls.tmpdir = tempfile.mkdtemp()
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     @classmethod
     def tearDownClass(cls):
-        '''Test case class common fixture teardown.
-        '''
+        '''Test case class common fixture teardown.'''
+        cls.clean_tmpdir()
+        os.rmdir(cls.tmpdir)
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @classmethod
+    def clean_tmpdir(cls):
+        '''Remove all content from cls.tmpdir.'''
         for root, dirs, files in os.walk(cls.tmpdir, topdown=False):
             for name in files:
                 os.remove(os.path.join(root, name))
             for name in dirs:
                 os.rmdir(os.path.join(root, name))
-
-        os.rmdir(cls.tmpdir)
 
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->

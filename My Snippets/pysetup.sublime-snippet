@@ -1,0 +1,49 @@
+<snippet>
+	<content><![CDATA[
+
+'''$1 package setup.'''
+
+# pylint: disable=invalid-name
+
+import os
+
+from setuptools import find_packages
+from setuptools import setup
+
+
+# Construct a list of all scripts to be installed.
+script_files = os.listdir(
+    os.path.join(
+        os.path.dirname(os.path.realpath(__file__)),
+        'bin'
+        )
+    )
+
+script_package_paths = [os.path.join('bin', s) for s in script_files]
+
+setup(
+    name="$1",
+    version="1.0.0",
+    description="$2",
+    author="Scott Brown",
+    author_email='scott.brown@one.verizon.com',
+    url="https://github.oncue.verizon.net/Security/$1",
+    packages=find_packages(exclude=['test_*']),
+    # package_data={
+    #     '': [
+    #         ]
+    #     },
+    # scripts reside in bin dirs.
+    scripts=script_package_paths,
+    install_requires=[
+        $3,
+        $4
+        ]
+    )
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pysetup</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

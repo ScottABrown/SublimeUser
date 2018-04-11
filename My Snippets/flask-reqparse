@@ -1,0 +1,26 @@
+<snippet>
+	<content><![CDATA[
+
+from flask_restful import reqparse
+
+class MyClass(Resource):
+    '''My class.'''
+
+    parser = reqparse.RequestParser()
+    parser.add_argument(
+        'parameter1',
+        type=str, required=True,
+        help='A parameter1 is required.'
+        )
+
+    def method(self):
+        '''Method.'''
+
+        data = MyClass.parser.parse_args()
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>flask-reqparse</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.javascript</scope> -->
+</snippet>

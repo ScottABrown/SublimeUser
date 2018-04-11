@@ -1,0 +1,38 @@
+<snippet>
+	<content><![CDATA[
+
+# Set this to True to show trees, False to skip all calls to show
+# them.
+__SHOW_TREE = True
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# If logging is on, call with:
+# logger.setLevel(logging.WARN)
+# show_tree(self.tmpdir)
+# logger.setLevel(logging.DEBUG)
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def show_tree(dir):
+    '''Pause to show a directory hierarchy.'''
+	import sys
+	import sh
+
+    if not sys.modules[__name__].__SHOW_TREE:
+        return
+    print
+    print sh.tree(dir)
+    print '[RETURN] to continue, [CTRL-D] to suppress...'
+    try:
+        input()
+    except EOFError:
+        # We get this from [CTRL-D].
+        sys.modules[__name__].__SHOW_TREE = False
+    except SyntaxError:
+        # We get this from [RETURN].
+        pass
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pyshowtree</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

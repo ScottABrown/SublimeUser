@@ -1,0 +1,141 @@
+<snippet>
+	<content><![CDATA[
+'''$1'''
+
+
+import argparse
+
+import logging
+import os
+
+
+FILENAME = os.path.split(__file__)[-1]
+BASE_FILENAME = FILENAME[:-3] if FILENAME[-3:] == '.py' else FILENAME
+
+# LOG_HANDLE = '%s_logger' % FILENAME
+DEFAULT_LOG_FILE_NAME = '.'.join([BASE_FILENAME, 'log'])
+DEFAULT_LOG_PATH = os.path.join(os.getcwd(), DEFAULT_LOG_FILE_NAME)
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def argument_parser():
+    '''Define command line arguments.'''
+
+    parser = argparse.ArgumentParser(
+        description='''
+        $1
+        '''
+        )
+
+    parser.add_argument(
+        '-l', '--log-path',
+        default=DEFAULT_LOG_PATH,
+        help='''
+            path to desired log file (DEFAULT: %s).
+            ''' % DEFAULT_LOG_FILE_NAME
+        )
+
+    parser.add_argument(
+        '--no-log',
+        default=False,
+        action='store_true',
+        help='''don't write a log file.'''
+        )
+
+    parser.add_argument(
+        '-v', '--verbose',
+        dest='verbose',
+        default=0,
+        action='count',
+        help='''show more output.'''
+        )
+
+    parser.add_argument(
+        'input_file',
+        metavar="INPUT_FILE",
+        nargs='*',
+        help='''
+            file.
+            '''
+        )
+
+    return parser
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def initialize_logging(args):
+    '''Initialize loggers, handlers and formatters.
+
+    A stream handler and file handler are added to the root logger.
+    '''
+
+    logger = logging.getLogger()
+    logger.setLevel(logging.DEBUG)
+
+    # Logging handler for log file
+    if not args.no_log:
+        fhandler = logging.FileHandler(args.log_path)
+        fhandler.setLevel(logging.DEBUG)
+        fformatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+        fhandler.setFormatter(fformatter)
+        logger.addHandler(fhandler)
+
+    # Logging handler for stdout messages.
+    shandler = logging.StreamHandler()
+
+    sh_loglevel = [logging.WARNING, logging.INFO, logging.DEBUG]
+    shandler.setLevel(sh_loglevel[min(args.verbose, 2)])
+
+    if shandler.level < logging.INFO:
+        sformatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+            )
+        shandler.setFormatter(sformatter)
+
+
+    logger.addHandler(shandler)
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def log_startup_configuration(args):
+    '''Log execution start and configuration information.'''
+
+    logger = logging.getLogger(__name__)
+
+    logger.info('#%s', ' -' * 32)
+    logger.info('#%sStarting %s', ' ' * 24, FILENAME)
+    logger.info('#%s', ' -' * 32)
+    logger.debug('Process PID: %s', os.getpid())
+    if args.no_log:
+        logger.info('logging is disabled')
+    else:
+        logger.info('log file is %s', args.log_path)
+
+
+    logger.debug('Command line parameters:')
+    for attr in [attr for attr in dir(args) if attr[0] != '_']:
+        attr_log_entry = '    {:<16}\t{}'.format(attr, getattr(args, attr))
+        logger.debug(attr_log_entry)
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+def main():
+    '''Main program entry point.'''
+
+    parser = argument_parser()
+    args = parser.parse_args()
+
+    initialize_logging(args)
+    log_startup_configuration(args)
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+if __name__ == "__main__":
+    main()
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>pyscript</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<scope>source.python</scope>
+</snippet>

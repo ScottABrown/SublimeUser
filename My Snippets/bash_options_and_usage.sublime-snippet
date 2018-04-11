@@ -1,5 +1,10 @@
 <snippet>
 	<content><![CDATA[
+
+# Remove these if already defined (e.g. from bash_globals snippet).
+# declare -r SCRIPT_NAME=\$(basename \$0)
+# declare -r SUCCESS=0
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 # Usage message and command line options
@@ -7,26 +12,27 @@
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 usage() {
 
-    local usage="usage: \$SCRIPTNAME"
+    local usage="usage: \$SCRIPT_NAME"
     local pad_width=\${#usage}
     local pad_space=\$(printf "%${pad_width}s")
 
     local Q="'"
 
-    # This bit is all to get the extra option lines lined up. Pretty. :)
+    # This bit with \$pad_space is all to get the extra option lines
+    # lined up. Pretty. :)
     echo
-    echo "$usage [-h] [-c CONFIGFILEPATH]"
-    echo "$pad_space [-v[v...]]"
+    echo "\${usage} [-h] [-c CONFIGFILEPATH]"
+    echo "\${pad_space} [-v[v...]]"
 
 	cat << EOUSAGE
 
 A description of the purpose of this script.
 
 Options:
-  -h   Print this message
+  -h    Print this message
   -c CONFIGFILEPATH
   		Read configuration from file at CONFIGFILEPATH.
-  -v   Verbose: Print additional progress information. (Repeatable.)
+  -v    Verbose: Print additional progress information. (Repeatable.)
 
 EOUSAGE
 	}
@@ -41,16 +47,16 @@ parse_args() {
 		case \$option in
 			h)
 				usage
-				exit \$SUCCESS
+				exit \${SUCCESS}
 				;;
 			c)
-				OPT_CONFIGFILEPATH="$OPTARG"
+				OPT_CONFIGFILEPATH="\${OPTARG}"
 				;;
 			v)
 				OPT_VERBOSITY=\$((OPT_VERBOSITY + 1))
 				;;
 			?)
-				echo "Invalid option: -\$OPTARG" >&2
+				echo "Invalid option: -\${OPTARG}" >&2
 				echo
 				usage
 				exit \$FAILURE
@@ -62,10 +68,9 @@ parse_args() {
 	shift \$((\$OPTIND - 1))
 	}
 
-$0
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>getoptions</tabTrigger>
+	<tabTrigger>bash-options</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 	<description>Bash options and usage</description>

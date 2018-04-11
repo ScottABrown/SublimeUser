@@ -1,0 +1,62 @@
+<snippet>
+	<content><![CDATA[
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  function createControlVisibilityToggles() {
+      d3.select('#controls')
+        .selectAll('.toggle-open, .toggle-close')
+          .each(function(){
+            var toggle_control = d3.select(this);
+            var points = toggle_control.classed('toggle-open') ? '0,4 0,16 8,10' : '0,6 12,6 6,14';
+            toggle_control.select('svg')
+                .attr('height', 16)
+                .attr('width', 14)
+              .select('polygon')
+                .attr('fill', '#f4f4fa')
+                .attr('stroke', 'none')
+                .attr('points', points);
+            toggle_control.classed('hidden', toggle_control.classed('toggle-open'));
+            })
+      }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  function activateControlVisibilityToggles() {
+      // This assumes the structure has a "toggle" node and
+      // the corresponding "toggle-target" node as peers
+      // under the same parent toggle-visibility node.
+      //
+      // E.g.
+      //
+      // <span class='toggle-visibility'>
+      //   <p><span class="toggle">
+      //       <span class='toggle-open hidden'><svg><polygon></polygon></svg></span>
+      //       <span class='toggle-close hidden'><svg><polygon></polygon></svg></span>
+      //     </span>Protocols and Ports exposed:</p>
+      //   <div class='toggle-target'></div>
+      d3.selectAll('.toggle-visibility').each(
+          function() {
+              var toggle_parent = d3.select(this);
+              var toggle_control = toggle_parent.select('.toggle');
+              var toggle_target = toggle_parent.select('.toggle-target');
+              toggle_control.on(
+                  'click',
+                  function() {toggleVisibility(toggle_target, toggle_control);}
+                  );
+              }
+          );
+      }
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  function toggleVisibility(target, control) {
+    showNow = target.classed('hidden');
+    target.classed('hidden', ! showNow);
+    control.select('.toggle-open').classed('hidden', showNow);
+    control.select('.toggle-close').classed('hidden', ! showNow);
+    }
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>js-toggle-visibility</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.javascript</scope> -->
+</snippet>

@@ -1,10 +1,15 @@
 {
-	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night-Bright.tmTheme",
-	"font_face": "Ubuntu Mono",
-	"font_size": 15.0,
+	"color_scheme": "Packages/User/Monokai (Flake8Lint).tmTheme",
+	"font_size": 14.0,
 	"ignored_packages":
 	[
 		"Emmet",
+		"Ensime",
+		"JSHint",
+		"JSLint",
+		"Pylinter",
+		"sublime-jslint",
+		"SublimeLinter",
 		"Vintage"
 	],
 	"rulers":

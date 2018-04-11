@@ -1,6 +1,2 @@
 [
-{"keys": ["super+alt+ctrl+shift+d"], "command": "add_date_time_stamp" },
-{"keys": ["super+alt+cntrl+d"], "command": "add_date_stamp" },
-{"keys": ["super+alt+cntrl+t"], "command": "add_time_stamp" },
-{"keys": ["super+alt+y"], "command": "add_year_stamp" }
 ]

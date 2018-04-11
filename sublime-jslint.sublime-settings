@@ -1,0 +1,13 @@
+{
+
+    //Errors and RegEx to be ignored
+    "ignore_errors":
+    [
+        "Expected an identifier and instead saw 'undefined' (a reserved word)",
+        "'spread/rest operator' is only available in JavaScript 1.7"
+    ],
+
+    //Run JSLint on save.
+    "run_on_save": true
+
+}

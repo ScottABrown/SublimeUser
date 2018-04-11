@@ -1,6 +1,18 @@
 <snippet>
 	<content><![CDATA[
 
+
+# Create a temporary working directory.
+declare -r TMP_DIR="\$(mktemp -d)"
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+# Cleanup at exit time.
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+finish() {
+    rm -rf "\${TMP_DIR}"
+    }
+trap finish EXIT  # This will always run finish() before the script exits.
+
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 #
 # Main program entry point.
@@ -18,7 +30,7 @@ main "\$@"
 $0
 ]]></content>
 	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
-	<tabTrigger>main</tabTrigger>
+	<tabTrigger>bash-main</tabTrigger>
 	<!-- Optional: Set a scope to limit where the snippet will trigger -->
 	<!-- <scope>source.python</scope> -->
 	<description>Bash main()</description>

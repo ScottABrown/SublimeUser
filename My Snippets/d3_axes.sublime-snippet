@@ -1,0 +1,27 @@
+<snippet>
+	<content><![CDATA[
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  // Axes setup.
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  function populateAxes() {
+
+    // A horizontal axis.
+    var x_axis = d3.axisTop(SCALE);
+
+    d3.select('#playground')
+        .attr('class', 'axis')
+        // .attr('width', 300)
+        // .attr('height', 30)
+      .append("g")
+        .attr('transform', 'translate(0, 20)')
+        .call(x_axis);
+
+    }
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>d3_axes</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+  <scope>text.html</scope>
+</snippet>

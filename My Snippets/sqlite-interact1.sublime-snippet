@@ -1,0 +1,19 @@
+<snippet>
+	<content><![CDATA[
+
+connection = sqlite3.connect('data.db')
+cursor = connection.cursor()
+
+insert_query = "INSERT INTO users VALUES (?, ?, ?)"
+cursor.execute(insert_query, (item,))
+
+connection.commit()
+connection.close()
+
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sqlite-interact1</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.javascript</scope> -->
+</snippet>

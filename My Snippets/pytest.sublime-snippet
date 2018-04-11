@@ -1,11 +1,7 @@
 <snippet>
 	<content><![CDATA[
 
-'''
-test_$1.py
-
-Test cases for the $1.py module.
-'''
+'''Test cases for the $1.py module.'''
 
 import unittest
 
@@ -19,26 +15,48 @@ import $1
 # logger.setLevel(logging.DEBUG)
 # shandler = logging.StreamHandler()
 # shandler.setLevel(logging.INFO)  # Pick one.
-# shandler.setLevel(logging.DEBUG)  # Pick one.
+# <!-- # shandler.setLevel(logging.DEBUG)  # Pick one. -->
+# formatter = logging.Formatter(
+#     '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+#     )
+# shandler.setFormatter(formatter)
 # logger.addHandler(shandler)
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-class Test$2(unittest.TestCase):
-    '''
-    Basic test cases for $2.
-    '''
+class $2TestBaseClass(unittest.TestCase):
+    '''Common base class for $2 testing.'''
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @classmethod
+    def setUpClass(cls):
+        '''Create test class level fixture.'''
+
+        # If we're working from an even more general base class.
+        # super($2TestBaseClass, cls).setUpClass()
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class Test$2Class(unittest.TestCase):
+    '''Test cases for $2 class level functionality.'''
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-    def setUp(self):
-        '''Test case common fixture setup.
-        '''
-        pass
+    def test_$1_class_methods(self):
+        '''Test $2 class methods.'''
+
+        thing = $1.$2()
+
+        self.assertTrue(True)
+        self.assertEqual(1, 1)
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class Test$2Initialization(unittest.TestCase):
+    '''Test cases for $2 initialization.'''
 
     # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
     def test_$1_init(self):
-        '''Test initialization of a $2 instance.
-        '''
+        '''Test initialization of a $2 instance.'''
 
         thing = $1.$2()
         self.assertIsNotNone(thing)
@@ -48,14 +66,48 @@ class Test$2(unittest.TestCase):
 
 
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+class Test$2Properties(unittest.TestCase):
+    '''Test cases for $2 properties.'''
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @classmethod
+    def setUpClass(self):
+        '''Test class common fixture setup.'''
+        pass
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    @classmethod
+    def tearDownClass(self):
+        '''Test class common fixture teardown.'''
+        pass
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def setUp(self):
+        '''Test case common fixture setup.'''
+        pass
+
+    # - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+    def test_$1_property(self):
+        '''Test the $2.property property.'''
+
+        thing = $1.$2()
+
+
+# - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # Define test suite.
 # - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 # pylint: disable=invalid-name
 load_case = unittest.TestLoader().loadTestsFromTestCase
 all_suites = {
     # Lowercase these.
-    'suite_$2': load_case(
-        Test$2
+    'suite_$2Class': load_case(
+        Test$2Class
+        ),
+    'suite_$2Initialization': load_case(
+        Test$2Initialization
+        ),
+    'suite_$2Properties': load_case(
+        Test$2Properties
         ),
     }
 
